@@ -1,5 +1,7 @@
 # Public website and dashboard
 
+Latest editorial release checks: see [v1.0 verification](V1_RELEASE.md).
+
 Verified live canonical URL: https://mrtrauf.github.io/clubops-intelligence-public/
 GitHub Pages deployment and anonymous live-browser checks succeeded on
 11 November 2026. This document describes the deployed boundary and evidence.

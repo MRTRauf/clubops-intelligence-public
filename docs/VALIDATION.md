@@ -1,5 +1,7 @@
 # Validation evidence
 
+Latest editorial release checks: see [v1.0 verification](V1_RELEASE.md).
+
 Public snapshot checks: 11 November 2026. No analytics dataset, report or model
 was rebuilt during curation. Synthetic tests use temporary fixtures only.
 
