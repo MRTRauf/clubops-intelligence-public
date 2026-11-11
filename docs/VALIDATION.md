@@ -1,11 +1,22 @@
 # Validation evidence
 
+## Current v1.0 release status
+
+PRs #1, #2 and [#3](https://github.com/MRTRauf/clubops-intelligence-public/pull/3)
+are merged; the final release commit is `1dfa9a8b8ab93f49ec1e291e7f2bfe07a12afb11`.
+[Pages run 43089945351](https://github.com/MRTRauf/clubops-intelligence-public/actions/runs/43089945351)
+succeeded. Final maintenance independently checked the merge/deployment records
+and reran the **24 tests under both -S and -O**, pipeline, packaging and site checks.
+The release is deployed; direct public URL rechecks remain blocked by this
+environment's network policy. See [v1.0 verification](V1_RELEASE.md) for details.
+Older test counts and implementation-time network blockers below are historical.
+
 Latest editorial release checks: see [v1.0 verification](V1_RELEASE.md).
 
 Public snapshot checks: 11 November 2026. No analytics dataset, report or model
 was rebuilt during curation. Synthetic tests use temporary fixtures only.
 
-## Checks rerun for this distribution
+## Historical initial distribution checks
 
 - `python -S -m unittest discover -s tests -v`: 19 tests, OK (0.828 seconds).
 - `python -O -m unittest discover -s tests -v`: 19 tests, OK (0.522 seconds).
@@ -57,9 +68,10 @@ Microsoft MIT license are retained under [schemas](../powerbi/ClubOps/schemas/).
 Power BI Desktop was not available: Microsoft TMDL deserialization, Power Query
 refresh, DAX evaluation, native rendering, slicer interactions and save/reopen
 acceptance remain unverified. The PBIP guide supplies five club reconciliation
-cases. There is no claimed PBIX, LLM feature, Power Automate flow or deployment.
+cases. There is no claimed PBIX, LLM feature or Power Automate deployment.
+The HTML portfolio is deployed through GitHub Pages, as recorded above.
 
-## Hosted portfolio acceptance
+## Historical initial hosted portfolio acceptance
 
 The later GitHub Pages publication adds live browser validation, documented in
 WEBSITE.md. Nineteen Python tests and reporting integrity checks pass again;

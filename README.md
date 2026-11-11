@@ -1,5 +1,16 @@
 # ClubOps Intelligence
 
+## Released v1.0
+
+The final editorial release is merged through [PR #3](https://github.com/MRTRauf/clubops-intelligence-public/pull/3)
+at `1dfa9a8b8ab93f49ec1e291e7f2bfe07a12afb11`.
+[GitHub Pages deployment 43089945351](https://github.com/MRTRauf/clubops-intelligence-public/actions/runs/43089945351)
+succeeded. The 24-test suite passes under both `-S` and `-O`; final maintenance
+also reran pipeline, packaging and site checks. See [current release status](docs/V1_RELEASE.md#current-v10-release-status)
+for verified deployment evidence, earlier browser/Excel evidence and current
+network limitations.
+
+
 **[Live portfolio & dashboard](https://mrtrauf.github.io/clubops-intelligence-public/)** ? [Open interactive dashboard](https://mrtrauf.github.io/clubops-intelligence-public/dashboard/)
 
 ### League fixture reporting with visible data quality

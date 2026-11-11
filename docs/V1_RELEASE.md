@@ -1,10 +1,34 @@
 # ClubOps Intelligence v1.0 editorial verification
 
-Editorial release candidate, checked on 11 November 2026. This finishes the
+## Current v1.0 release status
+
+PRs [#1](https://github.com/MRTRauf/clubops-intelligence-public/pull/1),
+[#2](https://github.com/MRTRauf/clubops-intelligence-public/pull/2) and
+[#3](https://github.com/MRTRauf/clubops-intelligence-public/pull/3) are merged.
+PR #3 was squash-merged into `main` as
+`1dfa9a8b8ab93f49ec1e291e7f2bfe07a12afb11` on 11 November 2026.
+[GitHub Pages run 43089945351](https://github.com/MRTRauf/clubops-intelligence-public/actions/runs/43089945351)
+reports **Success** for that commit. These merge and workflow results were
+independently checked against the public GitHub pages and remote Git history
+during final maintenance.
+
+The final suite contains **24 tests**, passing with both `-S` and `-O`.
+Final maintenance reran both suites, the pipeline check, site packaging and
+site validation. No new Excel, Power BI Desktop or browser acceptance is claimed.
+The earlier local browser evidence remains documented below and in the release
+verification notes.
+
+The release is deployed. Direct HTTPS rechecks of the public website and
+dashboard remain blocked by this maintenance environment's network policy;
+that limitation does not indicate a deployment failure. Earlier statements
+about blocked PR creation or pending release deployment are historical.
+
+
+Final editorial release, checked on 11 November 2026. This finishes the
 briefing and case study; it does not rebuild analytics or establish new Excel
 or Power BI Desktop evidence.
 
-## Checks executed for this release
+## Final editorial release checks (before merge)
 
 - 24 Python tests passed under both `python -S -m unittest discover -s tests -v`
   and `python -O -m unittest discover -s tests -v`.
@@ -33,8 +57,9 @@ and ten cached schemas remain earlier static evidence; no Desktop parsing,
 M/DAX execution, refresh or rendering is claimed. No official cross-source
 reconciliation, client impact measurement, LLM or Power Automate flow is claimed.
 
-## Release status
+## Historical environment limitation before PR #3 merge
 
-GitHub API and both public Pages URLs returned network-policy denials in this
-environment. PR creation, merge, deployment and live HTTPS verification remain
-pending. This document records local release-candidate checks, not publication.
+The implementation environment denied GitHub API and public Pages access.
+At that point PR creation, merge, deployment and live HTTPS verification were
+pending. PR #3 and successful deployment now supersede that release status;
+direct public Pages verification is still blocked in the maintenance environment.
