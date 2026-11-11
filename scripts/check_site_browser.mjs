@@ -1,0 +1,93 @@
+// Run: node --experimental-websocket scripts/check_site_browser.mjs [--local]
+// Uses installed Chrome and its debugging protocol; no browser dependency install.
+import {spawn} from 'node:child_process';
+import {readFileSync,existsSync,mkdirSync,writeFileSync} from 'node:fs';
+import {resolve,dirname,join,extname} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import http from 'node:http';
+const root=resolve(dirname(fileURLToPath(import.meta.url)),'..');
+const local=process.argv.includes('--local');
+const pause=ms=>new Promise(r=>setTimeout(r,ms));
+const ensure=(ok,msg)=>{if(!ok)throw new Error(msg)};
+let server;
+let base='https://mrtrauf.github.io/clubops-intelligence-public/';
+if(local){
+  const site=join(root,'site');
+  server=http.createServer((req,res)=>{
+    let path=resolve(site,'.'+decodeURIComponent(new URL(req.url,'http://test.invalid').pathname));
+    if(!path.startsWith(site)){res.writeHead(403);return res.end()}
+    if(!extname(path))path=join(path,'index.html');
+    try{const types={'.html':'text/html; charset=utf-8','.css':'text/css','.png':'image/png','.json':'application/json','.csv':'text/csv','.xlsx':'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet','.zip':'application/zip'};res.setHeader('Content-Type',types[extname(path)]||'text/plain');res.end(readFileSync(path))}catch{res.writeHead(404);res.end('Not found')}
+  });
+  await new Promise(r=>server.listen(0,'127.0.0.1',r));
+  base=`http://127.0.0.1:${server.address().port}/`;
+}
+const runtime=join(root,'.runtime',`pages-browser-${Date.now()}`);mkdirSync(runtime,{recursive:true});
+const chrome=join(process.env.PROGRAMFILES||'C:/Program Files','Google/Chrome/Application/chrome.exe');
+ensure(existsSync(chrome),'Installed Chrome not found');
+const child=spawn(chrome,['--headless','--disable-gpu','--no-sandbox','--no-first-run','--remote-debugging-port=0','--remote-allow-origins=*',`--user-data-dir=${runtime}`,'about:blank'],{stdio:'ignore',windowsHide:true});
+let ws;
+try{
+  const active=join(runtime,'DevToolsActivePort');
+  for(let n=0;n<100&&!existsSync(active);n++)await pause(100);
+  ensure(existsSync(active),'Chrome did not start');
+  const port=readFileSync(active,'utf8').split('\n')[0];
+  const targets=await (await fetch(`http://127.0.0.1:${port}/json/list`)).json();
+  ws=new WebSocket(targets.find(t=>t.type==='page').webSocketDebuggerUrl);
+  await new Promise((r,j)=>{ws.onopen=r;ws.onerror=j});
+  let next=0;const pending=new Map(),errors=[],httpErrors=[];
+  ws.onmessage=event=>{
+    const m=JSON.parse(event.data);
+    if(m.id){const p=pending.get(m.id);if(p){pending.delete(m.id);m.error?p.reject(new Error(JSON.stringify(m.error))):p.resolve(m.result)}}
+    if(m.method==='Runtime.exceptionThrown')errors.push(m.params.exceptionDetails.text);
+    if(m.method==='Runtime.consoleAPICalled'&&m.params.type==='error')errors.push(JSON.stringify(m.params.args));
+    if(m.method==='Log.entryAdded'&&m.params.entry.level==='error')errors.push(m.params.entry.text);
+    if(m.method==='Network.responseReceived'&&m.params.response.status>=400)httpErrors.push({url:m.params.response.url,status:m.params.response.status});
+  };
+  const send=(method,params={})=>new Promise((resolve,reject)=>{const id=++next;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}));setTimeout(()=>{if(pending.has(id)){pending.delete(id);reject(new Error('CDP timeout '+method))}},20000).unref()});
+  const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});ensure(!r.exceptionDetails,'JS evaluation failed: '+JSON.stringify(r.exceptionDetails));return r.result.value};
+  for(const method of ['Page.enable','Runtime.enable','Log.enable','Network.enable'])await send(method);
+  const waitFor=async expression=>{for(let n=0;n<100;n++){if(await evaluate(expression))return;await pause(100)}throw new Error('Page readiness failed: '+expression)};
+  const navigate=async path=>{await send('Page.navigate',{url:new URL(path,base).href});await waitFor('document.readyState==="complete"');await pause(200)};
+  const viewport=async(width,height)=>{await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<600});await pause(200)};
+  const captures=local?runtime:join(root,'artifacts/screenshots');mkdirSync(captures,{recursive:true});
+  const snapshot=async name=>{const shot=await send('Page.captureScreenshot',{format:'png'});writeFileSync(join(captures,name),Buffer.from(shot.data,'base64'))};
+  await viewport(1440,1000);await navigate('index.html');
+  await waitFor('document.querySelector("h1")?.textContent.includes("fixture calendar")');
+  await evaluate('document.querySelectorAll("img").forEach(x=>x.loading="eager")');
+  await waitFor('[...document.images].every(x=>x.complete&&x.naturalWidth>0)');
+  ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Desktop landing overflows');
+  await snapshot('Website_Desktop.png');
+  await viewport(390,844);
+  ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Mobile landing overflows');
+  await snapshot('Website_Mobile.png');
+  await evaluate('document.querySelector(".actions a").click()');
+  await waitFor('document.querySelector("#fixtures")?.textContent==="38"');
+  const views=[];
+  const metrics=async(season,club,expected)=>{
+    await evaluate(`document.getElementById('season').value=${JSON.stringify(season)};document.getElementById('season').dispatchEvent(new Event('change'));document.getElementById('club').value=${JSON.stringify(club)};document.getElementById('club').dispatchEvent(new Event('change'));`);
+    const values=await evaluate("['fixtures','complete','short','scorecover'].map(id=>document.getElementById(id).textContent)");
+    ensure(JSON.stringify(values)===JSON.stringify(expected),'Dashboard mismatch '+season+' '+club+' '+values);
+    ensure(await evaluate('document.querySelectorAll("#fixtureRows tr").length===12'),'Fixture table row count');
+    views.push({season,club,values});
+  };
+  await metrics('2024-25','FC Barcelona',['38','37','7','97.4%']);
+  ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Mobile dashboard overflows');
+  await snapshot('Dashboard_Mobile.png');
+  await viewport(1440,1000);
+  await metrics('2023-24','FC Barcelona',['38','38','5','100.0%']);
+  await metrics('2024-25','Real Madrid CF',['38','37','6','97.4%']);
+  await metrics('2023-24','Girona FC',['38','38','2','100.0%']);
+  await metrics('2024-25','Valencia CF',['38','37','3','97.4%']);
+  await evaluate('document.querySelector("header a").click()');
+  await waitFor('document.querySelector(".hero")!==null');
+  await navigate('case-study.html');ensure(await evaluate('document.querySelector("h1").textContent.includes("case study")'),'Case study journey failed');
+  await viewport(390,844);ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Mobile case study overflows');
+  await navigate('briefing.html');ensure(await evaluate('document.body.textContent.includes("FC Barcelona")'),'Briefing missing');
+  ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Mobile briefing overflows');
+  ensure(!errors.length&&!httpErrors.length,'Browser errors: '+JSON.stringify({errors,httpErrors}));
+  const result={base,mode:local?'local preview':'live public HTTPS',views,viewport_checks:[1440,390],visitor_journey:'landing -> dashboard -> back -> case study -> briefing',live_change_events:true,images_loaded:true,console_errors:errors,http_errors:httpErrors,manual_accessibility_certification:false};
+  writeFileSync(local?join(runtime,'verification.json'):join(root,'artifacts/site_browser_verification.json'),JSON.stringify(result,null,2)+'\n');
+  console.log(JSON.stringify(result,null,2));
+  await send('Browser.close').catch(()=>{});
+}finally{if(ws)ws.close();child.kill();if(server)server.close()}

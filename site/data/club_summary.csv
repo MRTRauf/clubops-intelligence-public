@@ -1,0 +1,41 @@
+﻿season,club,club_key,fixtures,completed,home,away,wins,draws,losses,short_gaps_le_3_days,average_gap_days
+2023-24,Athletic Club,athletic-club,38,38,19,19,19,11,8,1,7.76
+2023-24,CA Osasuna,ca-osasuna,38,38,19,19,12,9,17,3,7.73
+2023-24,Cádiz CF,cadiz-cf,38,38,19,19,6,15,17,3,7.7
+2023-24,Club Atlético de Madrid,club-atletico-de-madrid,38,38,19,19,24,4,10,4,7.7
+2023-24,Deportivo Alavés,deportivo-alaves,38,38,19,19,12,10,16,2,7.73
+2023-24,FC Barcelona,fc-barcelona,38,38,19,19,26,7,5,5,7.76
+2023-24,Getafe CF,getafe-cf,38,38,19,19,10,13,15,7,7.76
+2023-24,Girona FC,girona-fc,38,38,19,19,25,6,7,2,7.73
+2023-24,Granada CF,granada-cf,38,38,19,19,4,9,25,2,7.68
+2023-24,Rayo Vallecano de Madrid,rayo-vallecano-de-madrid,38,38,19,19,8,14,16,3,7.78
+2023-24,RC Celta de Vigo,rc-celta-de-vigo,38,38,19,19,10,11,17,1,7.76
+2023-24,RCD Mallorca,rcd-mallorca,38,38,19,19,8,16,14,2,7.78
+2023-24,Real Betis Balompié,real-betis-balompie,38,38,19,19,14,15,9,2,7.73
+2023-24,Real Madrid CF,real-madrid-cf,38,38,19,19,29,8,1,4,7.76
+2023-24,Real Sociedad de Fútbol,real-sociedad-de-futbol,38,38,19,19,16,12,10,4,7.76
+2023-24,Sevilla FC,sevilla-fc,38,38,19,19,10,11,17,3,7.81
+2023-24,UD Almería,ud-almeria,38,38,19,19,3,12,23,3,7.78
+2023-24,UD Las Palmas,ud-las-palmas,38,38,19,19,10,10,18,3,7.78
+2023-24,Valencia CF,valencia-cf,38,38,19,19,13,10,15,2,7.81
+2023-24,Villarreal CF,villarreal-cf,38,38,19,19,14,11,13,4,7.73
+2024-25,Athletic Club,athletic-club,38,37,19,19,19,13,5,5,7.65
+2024-25,CA Osasuna,ca-osasuna,38,37,19,19,12,15,10,4,7.57
+2024-25,CD Leganés,cd-leganes,38,37,19,19,8,13,16,4,7.57
+2024-25,Club Atlético de Madrid,club-atletico-de-madrid,38,37,19,19,21,10,6,4,7.54
+2024-25,Deportivo Alavés,deportivo-alaves,38,37,19,19,10,11,16,3,7.59
+2024-25,FC Barcelona,fc-barcelona,38,37,19,19,27,4,6,7,7.59
+2024-25,Getafe CF,getafe-cf,38,37,19,19,11,9,17,3,7.62
+2024-25,Girona FC,girona-fc,38,37,19,19,11,8,18,3,7.65
+2024-25,Rayo Vallecano de Madrid,rayo-vallecano-de-madrid,38,37,19,19,13,12,12,4,7.54
+2024-25,RC Celta de Vigo,rc-celta-de-vigo,38,37,19,19,15,7,15,3,7.59
+2024-25,RCD Espanyol de Barcelona,rcd-espanyol-de-barcelona,38,37,19,19,10,9,18,3,7.51
+2024-25,RCD Mallorca,rcd-mallorca,38,37,19,19,13,8,16,4,7.54
+2024-25,Real Betis Balompié,real-betis-balompie,38,37,19,19,16,11,10,4,7.59
+2024-25,Real Madrid CF,real-madrid-cf,38,37,19,19,25,6,6,6,7.54
+2024-25,Real Sociedad de Fútbol,real-sociedad-de-futbol,38,37,19,19,13,7,17,3,7.54
+2024-25,Real Valladolid CF,real-valladolid-cf,38,37,19,19,4,4,29,5,7.51
+2024-25,Sevilla FC,sevilla-fc,38,37,19,19,10,11,16,1,7.62
+2024-25,UD Las Palmas,ud-las-palmas,38,37,19,19,8,8,21,1,7.59
+2024-25,Valencia CF,valencia-cf,38,37,19,19,11,12,14,3,7.54
+2024-25,Villarreal CF,villarreal-cf,38,37,19,19,19,10,8,3,7.54

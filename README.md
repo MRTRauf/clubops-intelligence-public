@@ -1,5 +1,7 @@
 # ClubOps Intelligence
 
+**[Live portfolio & dashboard](https://mrtrauf.github.io/clubops-intelligence-public/)** ? [Open interactive dashboard](https://mrtrauf.github.io/clubops-intelligence-public/dashboard/)
+
 ### League fixture reporting with visible data quality
 
 Independent football data and business intelligence portfolio. **No affiliation
@@ -32,13 +34,14 @@ or total competitive workload. [Definitions and limits](docs/KPIS_AND_LIMITATION
 |---|---|
 | [Python pipeline](clubops/pipeline.py) and [tests](tests/) | 19 tests pass with site packages disabled and under optimization; explicit row/summary validation |
 | [Reporting CSVs](data/processed/) | Every accepted fixture and all 40 club-season summaries reconciled to raw records |
-| [Excel workbook](artifacts/ClubOps_Reporting_COMPLETED.xlsx) | Native tables, SUM/SUMIFS formulas and a real PivotTable; 120 pivot values checked in Excel 16.0 |
-| [Offline HTML preview](artifacts/ClubOps_Dashboard.html) | Previously checked in five Chrome views against 20 displayed KPI values; not Power BI |
+| [Excel workbook](https://mrtrauf.github.io/clubops-intelligence-public/downloads/ClubOps_Reporting.xlsx) | Native tables, SUM/SUMIFS formulas and a real PivotTable; 120 pivot values checked in Excel 16.0 |
+| [Hosted HTML dashboard](https://mrtrauf.github.io/clubops-intelligence-public/dashboard/) | Reuses the verified HTML dashboard; not Power BI |
 | [Traceable briefing](artifacts/briefing.md) | Deterministic, source-row/ID/hash references; future scores hidden |
 | [Power BI Project](powerbi/ClubOps/ClubOps.pbip) | TMDL model, Power Query partitions and three PBIR pages authored; **static validation only, Desktop acceptance pending** |
 
-Download the Excel/HTML files and open them locally. GitHub previews do not
-execute the HTML dashboard. No application deployment is claimed.
+The live GitHub Pages site provides the visitor experience, dashboard controls,
+case study and briefing without authentication or installation. Excel and reporting
+CSVs are optional public downloads. This static site is not a live data service.
 
 ![Actual native Excel PivotTable](artifacts/screenshots/Excel_Club_Pivot.png)
 
@@ -63,6 +66,16 @@ Fixtures have two club perspectives. Unknown results count as fixtures but never
 wins/draws/losses. Calendar gaps reset by club and season. Duplicate ordered
 pairings and colliding club keys are rejected with a source-row audit trail;
 required validation remains active under `python -O`.
+
+## Website hosting
+
+The GitHub Actions workflow in `.github/workflows/pages.yml` packages only `site/`
+for GitHub Pages. `python scripts/prepare_site.py` copies existing verified assets
+and renders the case study/briefing; it never rebuilds analytics.
+`python scripts/check_site.py` checks relative navigation, public-link policy,
+landing KPIs and unchanged embedded dashboard data. Browser checks use installed
+Chrome: `node --experimental-websocket scripts/check_site_browser.mjs`.
+See [website verification](docs/WEBSITE.md) for the exact acceptance boundary.
 
 ## Reproduce
 
