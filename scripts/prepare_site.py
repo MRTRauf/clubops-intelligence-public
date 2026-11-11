@@ -84,7 +84,7 @@ def main():
     sys.path.insert(0, str(ROOT))
     from clubops.dashboard import render_html
     original = render_html(ROOT / 'data/processed')
-    hosted = original.replace('</head>', '<link rel="stylesheet" href="../assets/site.css"></head>')
+    hosted = re.sub(r'<style>.*?</style>', '<link rel="stylesheet" href="../assets/site.css">', original, flags=re.S)
     nav = shell('Dashboard', '').split('<header class="nav">')[1].split('</header>')[0]
     nav = nav.replace('href="index.html"', 'href="../index.html"').replace('href="dashboard/"', 'href="./"').replace('href="case-study.html"', 'href="../case-study.html"').replace('href="briefing.html"', 'href="../briefing.html"')
     hosted = hosted.replace('<body>', '<body class="dashboard"><a class="skip" href="#main">Skip to content</a><header class="nav">' + nav + '</header>')

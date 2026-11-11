@@ -48,7 +48,7 @@ try{
   const evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,returnByValue:true,awaitPromise:true});ensure(!r.exceptionDetails,'JS evaluation failed: '+JSON.stringify(r.exceptionDetails));return r.result.value};
   for(const method of ['Page.enable','Runtime.enable','Log.enable','Network.enable'])await send(method);
   const waitFor=async expression=>{for(let n=0;n<100;n++){if(await evaluate(expression))return;await pause(100)}throw new Error('Page readiness failed: '+expression)};
-  const navigate=async path=>{await send('Page.navigate',{url:new URL(path,base).href});await waitFor('document.readyState==="complete"');await pause(200)};
+  const navigate=async path=>{await send('Page.navigate',{url:new URL(path,base).href});await waitFor('document.readyState==="complete"');await evaluate('document.fonts.ready.then(()=>true)');await pause(200)};
   const viewport=async(width,height)=>{await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:width<600});await pause(200)};
   const captures=local?runtime:join(root,'artifacts/screenshots');mkdirSync(captures,{recursive:true});
   const snapshot=async name=>{const shot=await send('Page.captureScreenshot',{format:'png'});writeFileSync(join(captures,name),Buffer.from(shot.data,'base64'))};
@@ -100,9 +100,13 @@ try{
   await evaluate('document.querySelector("header a").click()');
   await waitFor('document.querySelector(".hero")!==null');
   await navigate('case-study.html');ensure(await evaluate('document.querySelector("h1").textContent.includes("case study")'),'Case study journey failed');
+  await viewport(1440,1000);await snapshot('Case_Study_Desktop.png');
   await viewport(390,844);ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Mobile case study overflows');
+  await snapshot('Case_Study_Mobile.png');
   await navigate('briefing.html');ensure(await evaluate('document.body.textContent.includes("FC Barcelona")'),'Briefing missing');
   ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Mobile briefing overflows');
+  await snapshot('Briefing_Mobile.png');
+  await viewport(1440,1000);await snapshot('Briefing_Desktop.png');
   ensure(await evaluate('document.querySelectorAll("main h2").length===5 && document.querySelectorAll("main ul").length===5'),'Briefing headings/lists malformed');
 
   ensure(!errors.length&&!httpErrors.length,'Browser errors: '+JSON.stringify({errors,httpErrors}));
