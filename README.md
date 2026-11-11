@@ -1,17 +1,14 @@
 # ClubOps Intelligence
 
-## Released v1.0
+**Football Operations & Data Analytics Portfolio**
 
-The final editorial release is merged through [PR #3](https://github.com/MRTRauf/clubops-intelligence-public/pull/3)
-at `1dfa9a8b8ab93f49ec1e291e7f2bfe07a12afb11`.
-[GitHub Pages deployment 43089945351](https://github.com/MRTRauf/clubops-intelligence-public/actions/runs/43089945351)
-succeeded. The 24-test suite passes under both `-S` and `-O`; final maintenance
-also reran pipeline, packaging and site checks. See [current release status](docs/V1_RELEASE.md#current-v10-release-status)
-for verified deployment evidence, earlier browser/Excel evidence and current
-network limitations.
+An independent football analytics project that transforms historical Spanish league fixtures into validated reporting, interactive dashboards, Excel analysis, and traceable matchday briefings.
 
+**[Explore Website](https://mrtrauf.github.io/clubops-intelligence-public/) | [Interactive Dashboard](https://mrtrauf.github.io/clubops-intelligence-public/dashboard/) | [Case Study](https://mrtrauf.github.io/clubops-intelligence-public/case-study.html) | [Matchday Briefing](https://mrtrauf.github.io/clubops-intelligence-public/briefing.html)**
 
-**[Live portfolio & dashboard](https://mrtrauf.github.io/clubops-intelligence-public/)** ? [Open interactive dashboard](https://mrtrauf.github.io/clubops-intelligence-public/dashboard/)
+*Built with Python, Excel, and public football data. Independent portfolio project; not affiliated with LALIGA or its clubs.*
+
+---
 
 ### League fixture reporting with visible data quality
 
