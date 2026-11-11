@@ -18,7 +18,7 @@ def shell(title, body):
 <a class="skip" href="#main">Skip to content</a>
 <header class="nav"><a class="brand" href="index.html">CLUBOPS <span>INTELLIGENCE</span></a>
 <nav aria-label="Main navigation"><a href="dashboard/">Dashboard</a><a href="case-study.html">Case study</a>
-<a href="briefing.html">Briefing</a><a href="{REPO}">Source code ↗</a></nav></header>
+<a href="briefing.html">Briefing</a><a href="{REPO}">Source code</a></nav></header>
 {body}<footer><a class="brand" href="index.html">CLUBOPS INTELLIGENCE</a>
 <p>Independent portfolio. No affiliation with, endorsement by, or internal data access from LALIGA or its clubs.</p>
 <p>Historical community data. No live feed or measured club business impact.</p>
@@ -27,18 +27,37 @@ def shell(title, body):
 
 
 def markdown_blocks(value):
-    out = []
-    for block in value.strip().split('\n\n'):
-        if block.startswith('# '):
-            out.append('<h1>' + html.escape(block[2:]) + '</h1>')
-        elif block.startswith('## '):
-            out.append('<h2>' + html.escape(block[3:]) + '</h2>')
-        elif block.strip():
-            text = html.escape(block).replace('\n', '<br>')
-            text = re.sub(r'\*\*(.*?)\*\*', r'<strong>\1</strong>', text)
-            text = re.sub(r'`(.*?)`', r'<code>\1</code>', text)
-            text = re.sub(r'(https://[^<\s]+)', r'<a href="\1">\1</a>', text)
-            out.append('<p>' + text + '</p>')
+    """Render the headings, lists and inline syntax used by our source documents."""
+    def inline(text):
+        text = html.escape(text, quote=True)
+        text = re.sub(r'`([^`]+)`', r'<code>\1</code>', text)
+        text = re.sub(r'\*\*([^*]+)\*\*', r'<strong>\1</strong>', text)
+        return re.sub(r'https://[^\s<>]+', lambda m: '<a href="' + m[0] + '">' + m[0] + '</a>', text)
+    out, paragraph, items = [], [], []
+    def flush():
+        if paragraph:
+            out.append('<p>' + inline(' '.join(paragraph)) + '</p>')
+            paragraph.clear()
+        if items:
+            out.append('<ul>' + ''.join('<li>' + inline(x) + '</li>' for x in items) + '</ul>')
+            items.clear()
+    for line in value.splitlines():
+        heading = re.match(r'^(#{1,6}) (.*)$', line)
+        if heading:
+            flush()
+            level = len(heading[1])
+            out.append(f'<h{level}>' + inline(heading[2]) + f'</h{level}>')
+        elif line.startswith('- '):
+            if paragraph:
+                flush()
+            items.append(line[2:])
+        elif not line.strip():
+            flush()
+        else:
+            if items:
+                flush()
+            paragraph.append(line.strip())
+    flush()
     return ''.join(out)
 
 
@@ -61,16 +80,14 @@ def main():
             archive.write(path, path.name)
         archive.write(ROOT / 'data/provenance/LICENSE.md', 'LICENSE.md')
         archive.write(ROOT / 'data/provenance/manifest.json', 'provenance.json')
-    original = (ROOT / 'artifacts/ClubOps_Dashboard.html').read_text(encoding='utf-8')
-    hosted = original.replace('</head>', '''<link rel="icon" href="data:,"><style>
-header a{color:#8ce3db}a:focus-visible,select:focus-visible{outline:3px solid #e08d30;outline-offset:4px}
-.foot{overflow-wrap:anywhere}@media(max-width:750px){.controls label,select{width:100%;min-width:0}
-section{overflow-x:auto}td,th{padding:9px 5px}.card{padding:14px}}</style></head>''')
-    hosted = hosted.replace('<header>', '''<header><a href="../index.html">← Portfolio home</a> ·
-<a href="../case-study.html">Case study</a><p><strong>Historical public-data demonstration ·
-2023–24 / 2024–25 · Not a live feed</strong></p>''', 1)
-    hosted = hosted.replace('This dashboard is generated locally from validated CSV files.',
-                            'This historical dashboard uses the validated public CSV snapshot.')
+    import sys
+    sys.path.insert(0, str(ROOT))
+    from clubops.dashboard import render_html
+    original = render_html(ROOT / 'data/processed')
+    hosted = original.replace('</head>', '<link rel="stylesheet" href="../assets/site.css"></head>')
+    nav = shell('Dashboard', '').split('<header class="nav">')[1].split('</header>')[0]
+    nav = nav.replace('href="index.html"', 'href="../index.html"').replace('href="dashboard/"', 'href="./"').replace('href="case-study.html"', 'href="../case-study.html"').replace('href="briefing.html"', 'href="../briefing.html"')
+    hosted = hosted.replace('<body>', '<body class="dashboard"><a class="skip" href="#main">Skip to content</a><header class="nav">' + nav + '</header>')
     (SITE / 'dashboard/index.html').write_text(hosted, encoding='utf-8')
     for output, source, title in [('case-study.html', 'docs/DEMO_AND_CASE_STUDY.md', 'Case study'),
                                   ('briefing.html', 'artifacts/briefing.md', 'Traceable briefing')]:

@@ -71,14 +71,20 @@ a retrospective reconstruction rather than an archived schedule.
 
 ## Release boundaries
 
-The release is a local Python/Excel portfolio checkpoint with an offline HTML
-preview, not a deployed service. Power BI is an M/DAX and page-design handoff:
-no PBIX/PBIP or executed Power BI measures are claimed. No embedded Excel
-Power Query, Power Automate flow or LLM feature/evaluation was built.
-Cross-machine Excel acceptance, live dropdown-change events, extra seasons
-and an external/fresh-session review remain unverified. The current audit and
-remediation occurred within one conversation. No time-saving, AI-accuracy or
-real-client impact measurement is claimed.
+The public GitHub Pages site hosts the dashboard, case study and traceable
+briefing, with optional CSV, Excel and PBIP source downloads. The dashboard is
+an HTML application over pinned historical data, not a live data service.
+Club and season controls support shareable URLs and browser history.
+
+The PBIP project includes a seven-table model, 14 DAX definitions, seven
+relationships, three report pages and 23 bound visuals. Its 32 schema-bearing
+files pass ten cached Microsoft schemas. Power BI Desktop acceptance remains
+pending: TMDL engine parsing, M/DAX execution, refresh, rendering and interactions
+are not verified. No PBIX, Power Automate flow or LLM feature is claimed.
+
+Local browser checks exercise dropdown changes, navigation and desktop/mobile
+layouts. Cross-machine Excel acceptance, extra seasons and external review
+remain pending. No time-saving or real-client impact measurement is claimed.
 
 For a short presentation, use VIDEO_DEMO_SCRIPT.md. Reproduction and recorded
 verification results are in the project README and VALIDATION.md.

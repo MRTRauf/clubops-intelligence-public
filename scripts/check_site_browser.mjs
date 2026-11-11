@@ -23,7 +23,7 @@ if(local){
   base=`http://127.0.0.1:${server.address().port}/`;
 }
 const runtime=join(root,'.runtime',`pages-browser-${Date.now()}`);mkdirSync(runtime,{recursive:true});
-const chrome=join(process.env.PROGRAMFILES||'C:/Program Files','Google/Chrome/Application/chrome.exe');
+const chrome=process.env.CHROME_PATH || (process.platform==='win32' ? join(process.env.PROGRAMFILES||'C:/Program Files','Google/Chrome/Application/chrome.exe') : '/usr/bin/chromium');
 ensure(existsSync(chrome),'Installed Chrome not found');
 const child=spawn(chrome,['--headless','--disable-gpu','--no-sandbox','--no-first-run','--remote-debugging-port=0','--remote-allow-origins=*',`--user-data-dir=${runtime}`,'about:blank'],{stdio:'ignore',windowsHide:true});
 let ws;
@@ -75,16 +75,36 @@ try{
   ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Mobile dashboard overflows');
   await snapshot('Dashboard_Mobile.png');
   await viewport(1440,1000);
+  await snapshot('Dashboard_Desktop.png');
   await metrics('2023-24','FC Barcelona',['38','38','5','100.0%']);
+  ensure(await evaluate('new URLSearchParams(location.search).get("season")==="2023-24"'),'Season missing from share URL');
+  ensure(await evaluate('new URLSearchParams(location.search).get("club")==="FC Barcelona"'),'Club missing from share URL');
+  await send('Page.reload');await waitFor('document.readyState==="complete"');
+  await waitFor('document.getElementById("short")?.textContent==="5"');
+
   await metrics('2024-25','Real Madrid CF',['38','37','6','97.4%']);
   await metrics('2023-24','Girona FC',['38','38','2','100.0%']);
   await metrics('2024-25','Valencia CF',['38','37','3','97.4%']);
+  await evaluate('history.back()');
+  await waitFor('document.getElementById("club").value==="Girona FC"');
+  ensure(await evaluate('document.getElementById("short").textContent===DATA.clubs.find(x=>x.club===document.getElementById("club").value&&x.season===document.getElementById("season").value).short_gaps_le_3_days'),'Back did not restore metrics');
+
+  await navigate('dashboard/?season=invalid&club=invalid');
+  await waitFor('document.getElementById("fixtures")?.textContent==="38"');
+  ensure(await evaluate('document.getElementById("season").value==="2024-25"'),'Invalid season fallback failed');
+  await evaluate('document.getElementById("season").focus()');
+  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'ArrowUp',code:'ArrowUp',windowsVirtualKeyCode:38});
+  await send('Input.dispatchKeyEvent',{type:'keyUp',key:'ArrowUp',code:'ArrowUp',windowsVirtualKeyCode:38});
+  await waitFor('document.getElementById("season").value==="2023-24"');
+  ensure(await evaluate('document.activeElement.id==="season"'),'Filter focus lost');
   await evaluate('document.querySelector("header a").click()');
   await waitFor('document.querySelector(".hero")!==null');
   await navigate('case-study.html');ensure(await evaluate('document.querySelector("h1").textContent.includes("case study")'),'Case study journey failed');
   await viewport(390,844);ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Mobile case study overflows');
   await navigate('briefing.html');ensure(await evaluate('document.body.textContent.includes("FC Barcelona")'),'Briefing missing');
   ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Mobile briefing overflows');
+  ensure(await evaluate('document.querySelectorAll("main h2").length===5 && document.querySelectorAll("main ul").length===5'),'Briefing headings/lists malformed');
+
   ensure(!errors.length&&!httpErrors.length,'Browser errors: '+JSON.stringify({errors,httpErrors}));
   const result={base,mode:local?'local preview':'live public HTTPS',views,viewport_checks:[1440,390],visitor_journey:'landing -> dashboard -> back -> case study -> briefing',live_change_events:true,images_loaded:true,console_errors:errors,http_errors:httpErrors,manual_accessibility_certification:false};
   writeFileSync(local?join(runtime,'verification.json'):join(root,'artifacts/site_browser_verification.json'),JSON.stringify(result,null,2)+'\n');
