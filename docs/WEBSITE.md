@@ -1,10 +1,22 @@
 # Public website and dashboard
 
+## Current v1.0 release status
+
+PRs #1, #2 and [#3](https://github.com/MRTRauf/clubops-intelligence-public/pull/3)
+are merged; the final release commit is `1dfa9a8b8ab93f49ec1e291e7f2bfe07a12afb11`.
+[Pages run 43089945351](https://github.com/MRTRauf/clubops-intelligence-public/actions/runs/43089945351)
+succeeded. Final maintenance independently checked the merge/deployment records
+and reran the **24 tests under both -S and -O**, pipeline, packaging and site checks.
+The release is deployed; direct public URL rechecks remain blocked by this
+environment's network policy. See [v1.0 verification](V1_RELEASE.md) for details.
+Older test counts and implementation-time network blockers below are historical.
+
 Latest editorial release checks: see [v1.0 verification](V1_RELEASE.md).
 
-Verified live canonical URL: https://mrtrauf.github.io/clubops-intelligence-public/
-GitHub Pages deployment and anonymous live-browser checks succeeded on
-11 November 2026. This document describes the deployed boundary and evidence.
+Canonical website URL: https://mrtrauf.github.io/clubops-intelligence-public/
+The initial publication had successful deployment and anonymous live-browser
+checks on 11 November 2026. That earlier evidence is distinguished below from
+the final deployment and current maintenance checks.
 
 ## Visitor journey
 
@@ -21,12 +33,12 @@ CSVs, source license/provenance and public download bundles. Internal prompts,
 private history, handoffs, caches and development environments are not deployed.
 The private backup repository is unchanged.
 
-The hosted dashboard reuses artifacts/ClubOps_Dashboard.html. Packaging adds
-portfolio navigation, a historical-data label and mobile/focus styling; its
-embedded DATA object and analytical control logic are preserved. The original
+The hosted dashboard is generated from clubops/dashboard.py and the verified
+CSV snapshot. Packaging supplies shared navigation and editorial CSS while
+preserving its embedded DATA object and analytical control logic. The original
 offline artifact remains available in source for reproducibility.
 
-## Checks
+## Historical initial publication checks
 
 - Nineteen Python tests pass; the existing reporting integrity check passes.
 - Four pages and 42 relative references pass scripts/check_site.py.
@@ -55,13 +67,12 @@ placeholder is an offline Desktop configuration, not a website link. No LLM or
 Power Automate implementation is claimed. Responsive checks and basic labeled
 controls/alt text do not constitute a full accessibility certification.
 
-## Verified public deployment
+## Historical initial public deployment
 
 Initial successful workflow: https://github.com/MRTRauf/clubops-intelligence-public/actions/runs/43076119828
 Site content commit: a0891cb8d2b7072944dbef74d5bbf5171e880759.
-The subsequent evidence commit preserves those website/data bytes and is deployed
-through the same workflow; final Actions/remote HEAD confirmation is reported
-at task completion. No private repository content is uploaded.
+The subsequent evidence commit preserved those website/data bytes and used
+the same workflow. The current final deployment is recorded above. No private repository content is uploaded.
 
 Anonymous HTTP crawl: 18 public HTTPS URLs returned 200, including landing,
 dashboard, case study, briefing, CSS, screenshots, workbook/CSV/PBIP downloads
