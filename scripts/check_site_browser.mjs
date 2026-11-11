@@ -99,18 +99,40 @@ try{
   ensure(await evaluate('document.activeElement.id==="season"'),'Filter focus lost');
   await evaluate('document.querySelector("header a").click()');
   await waitFor('document.querySelector(".hero")!==null');
-  await navigate('case-study.html');ensure(await evaluate('document.querySelector("h1").textContent.includes("case study")'),'Case study journey failed');
-  await viewport(1440,1000);await snapshot('Case_Study_Desktop.png');
-  await viewport(390,844);ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Mobile case study overflows');
-  await snapshot('Case_Study_Mobile.png');
-  await navigate('briefing.html');ensure(await evaluate('document.body.textContent.includes("FC Barcelona")'),'Briefing missing');
-  ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),'Mobile briefing overflows');
-  await snapshot('Briefing_Mobile.png');
-  await viewport(1440,1000);await snapshot('Briefing_Desktop.png');
-  ensure(await evaluate('document.querySelectorAll("main h2").length===5 && document.querySelectorAll("main ul").length===5'),'Briefing headings/lists malformed');
-
+  // Follow the release visitor journey using real links.
+  await evaluate(`document.querySelector('nav a[href="case-study.html"]').click()`);
+  await waitFor('document.querySelector("h1")?.textContent.includes("Historical calendars")');
+  await evaluate('document.querySelectorAll("img").forEach(x=>x.loading="eager")');
+  await waitFor('[...document.images].every(x=>x.complete&&x.naturalWidth>0)');
+  await evaluate(`document.querySelector('main a[href="dashboard/"]').click()`);
+  await waitFor('document.getElementById("fixtures")?.textContent==="38"');
+  await evaluate(`document.querySelector('nav a[href="../briefing.html"]').click()`);
+  await waitFor('document.querySelector(".brief-stats strong")?.textContent==="25"');
+  ensure(await evaluate('document.querySelectorAll("tbody")[0].rows.length===4 && document.querySelectorAll("tbody")[1].rows.length===5'),'Briefing fixture counts');
+  await evaluate('document.querySelector("summary").focus()');
+  await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Enter',code:'Enter',windowsVirtualKeyCode:13,text:'\r'});
+  await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Enter',code:'Enter',windowsVirtualKeyCode:13});
+  await waitFor('document.querySelector("details").open');
+  ensure(await evaluate('document.querySelector("details").textContent.includes("da5bfa1b3634e1039d9e71aec50bdc847f8761189e3de235a4e730e0dc64ca38")'),'Source hash missing');
+  await evaluate(`document.querySelector('main a[href="index.html"]').click()`);
+  await waitFor('document.querySelector(".hero")!==null');
+  for(const width of [1440,768,390,320]){
+    await viewport(width,width===1440?1000:844);
+    for(const [path,name] of [['case-study.html','Case_Study'],['briefing.html','Briefing']]){
+      await navigate(path);
+      await evaluate('document.querySelectorAll("img").forEach(x=>x.loading="eager")');
+      await waitFor('[...document.images].every(x=>x.complete&&x.naturalWidth>0)');
+      ensure(await evaluate('document.documentElement.scrollWidth<=innerWidth'),path+' overflows at '+width);
+      ensure(await evaluate('document.querySelectorAll("h1").length===1 && document.querySelector("main").firstElementChild!==null'),'Heading structure missing');
+      if(width===1440||width===390)await snapshot(name+(width===1440?'_Desktop.png':'_Mobile.png'));
+      if(width===390){
+        await evaluate(path==='briefing.html' ? 'document.querySelector(".table-scroll").scrollIntoView()' : 'document.querySelector(".findings").scrollIntoView()');
+        await snapshot(name+'_Detail_Mobile.png');
+      }
+    }
+  }
   ensure(!errors.length&&!httpErrors.length,'Browser errors: '+JSON.stringify({errors,httpErrors}));
-  const result={base,mode:local?'local preview':'live public HTTPS',views,viewport_checks:[1440,390],visitor_journey:'landing -> dashboard -> back -> case study -> briefing',live_change_events:true,images_loaded:true,console_errors:errors,http_errors:httpErrors,manual_accessibility_certification:false};
+  const result={base,mode:local?'local preview':'live public HTTPS',views,viewport_checks:[1440,768,390,320],visitor_journey:'homepage -> case study -> dashboard -> briefing -> homepage',live_change_events:true,images_loaded:true,console_errors:errors,http_errors:httpErrors,manual_accessibility_certification:false};
   writeFileSync(local?join(runtime,'verification.json'):join(root,'artifacts/site_browser_verification.json'),JSON.stringify(result,null,2)+'\n');
   console.log(JSON.stringify(result,null,2));
   await send('Browser.close').catch(()=>{});

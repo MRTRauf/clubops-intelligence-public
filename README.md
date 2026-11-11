@@ -32,7 +32,7 @@ or total competitive workload. [Definitions and limits](docs/KPIS_AND_LIMITATION
 
 | Deliverable | Verified status |
 |---|---|
-| [Python pipeline](clubops/pipeline.py) and [tests](tests/) | 19 tests pass with site packages disabled and under optimization; explicit row/summary validation |
+| [Python pipeline](clubops/pipeline.py) and [tests](tests/) | 24 tests pass with site packages disabled and under optimization; explicit row/summary validation |
 | [Reporting CSVs](data/processed/) | Every accepted fixture and all 40 club-season summaries reconciled to raw records |
 | [Excel workbook](https://mrtrauf.github.io/clubops-intelligence-public/downloads/ClubOps_Reporting.xlsx) | Native tables, SUM/SUMIFS formulas and a real PivotTable; 120 pivot values checked in Excel 16.0 |
 | [Hosted HTML dashboard](https://mrtrauf.github.io/clubops-intelligence-public/dashboard/) | Reuses the verified HTML dashboard; not Power BI |
