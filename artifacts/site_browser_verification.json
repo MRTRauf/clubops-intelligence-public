@@ -1,0 +1,66 @@
+{
+  "base": "https://mrtrauf.github.io/clubops-intelligence-public/",
+  "mode": "live public HTTPS",
+  "views": [
+    {
+      "season": "2024-25",
+      "club": "FC Barcelona",
+      "values": [
+        "38",
+        "37",
+        "7",
+        "97.4%"
+      ]
+    },
+    {
+      "season": "2023-24",
+      "club": "FC Barcelona",
+      "values": [
+        "38",
+        "38",
+        "5",
+        "100.0%"
+      ]
+    },
+    {
+      "season": "2024-25",
+      "club": "Real Madrid CF",
+      "values": [
+        "38",
+        "37",
+        "6",
+        "97.4%"
+      ]
+    },
+    {
+      "season": "2023-24",
+      "club": "Girona FC",
+      "values": [
+        "38",
+        "38",
+        "2",
+        "100.0%"
+      ]
+    },
+    {
+      "season": "2024-25",
+      "club": "Valencia CF",
+      "values": [
+        "38",
+        "37",
+        "3",
+        "97.4%"
+      ]
+    }
+  ],
+  "viewport_checks": [
+    1440,
+    390
+  ],
+  "visitor_journey": "landing -> dashboard -> back -> case study -> briefing",
+  "live_change_events": true,
+  "images_loaded": true,
+  "console_errors": [],
+  "http_errors": [],
+  "manual_accessibility_certification": false
+}

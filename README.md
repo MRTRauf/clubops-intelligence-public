@@ -75,7 +75,9 @@ and renders the case study/briefing; it never rebuilds analytics.
 `python scripts/check_site.py` checks relative navigation, public-link policy,
 landing KPIs and unchanged embedded dashboard data. Browser checks use installed
 Chrome: `node --experimental-websocket scripts/check_site_browser.mjs`.
-See [website verification](docs/WEBSITE.md) for the exact acceptance boundary.
+The Pages deployment succeeded. Anonymous live checks passed for 18 HTTPS URLs;
+Chrome verified desktop/mobile rendering, five club/season selections and no
+console errors. See [website verification](docs/WEBSITE.md) for evidence and limits.
 
 ## Reproduce
 
@@ -155,5 +157,5 @@ and [90-second demo script](docs/VIDEO_DEMO_SCRIPT.md) for the business narrativ
 - League date gaps are not physical rest, cup/European workload or causal performance evidence.
 - Historical briefings reconstruct a downloaded file, not a schedule archived at the cutoff.
 - No attendance, financial, confidential operations or measured business-impact data is included.
-- Additional-season acceptance, cross-machine Excel checks and live browser dropdown-event tests remain pending.
+- Additional-season acceptance and cross-machine Excel checks remain pending. Live hosted dropdown events were verified in Chrome.
 - The next useful improvements are Desktop acceptance, an external review and a separately audited additional season; none is represented as completed.

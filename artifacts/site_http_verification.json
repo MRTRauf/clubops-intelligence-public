@@ -1,0 +1,100 @@
+{
+  "base": "https://mrtrauf.github.io/clubops-intelligence-public/",
+  "anonymous": true,
+  "urls_checked": 18,
+  "all_status_200": true,
+  "workbook_csv_bytes_verified": true,
+  "pbip_bundle_verified": true,
+  "urls": [
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/",
+      "status": 200,
+      "bytes": 7395
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/assets/site.css",
+      "status": 200,
+      "bytes": 5813
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/index.html",
+      "status": 200,
+      "bytes": 7395
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/dashboard/",
+      "status": 200,
+      "bytes": 506734
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/case-study.html",
+      "status": 200,
+      "bytes": 6067
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/briefing.html",
+      "status": 200,
+      "bytes": 3717
+    },
+    {
+      "url": "https://github.com/MRTRauf/clubops-intelligence-public",
+      "status": 200,
+      "bytes": 279170
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/dashboard/?season=2024-25&club=FC+Barcelona",
+      "status": 200,
+      "bytes": 506734
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/assets/HTML_2024-25.png",
+      "status": 200,
+      "bytes": 89779
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/data/season_summary.csv",
+      "status": 200,
+      "bytes": 360
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/assets/Excel_Club_Pivot.png",
+      "status": 200,
+      "bytes": 68089
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/downloads/ClubOps_Reporting.xlsx",
+      "status": 200,
+      "bytes": 24577
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/downloads/ClubOps-PowerBI-Project.zip",
+      "status": 200,
+      "bytes": 60777
+    },
+    {
+      "url": "https://github.com/openfootball/football.json",
+      "status": 200,
+      "bytes": 285113
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/data/provenance.json",
+      "status": 200,
+      "bytes": 1045
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/downloads/ClubOps-Reporting-Data.zip",
+      "status": 200,
+      "bytes": 43812
+    },
+    {
+      "url": "https://mrtrauf.github.io/clubops-intelligence-public/data/LICENSE.md",
+      "status": 200,
+      "bytes": 6555
+    },
+    {
+      "url": "https://github.com/MRTRauf/clubops-intelligence-public/blob/main/LICENSE",
+      "status": 200,
+      "bytes": 178626
+    }
+  ]
+}

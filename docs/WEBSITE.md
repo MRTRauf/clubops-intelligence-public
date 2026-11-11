@@ -1,8 +1,8 @@
 # Public website and dashboard
 
-Intended canonical URL: https://mrtrauf.github.io/clubops-intelligence-public/
-The final deployment and live-browser checks must succeed before hosting is
-reported complete. This document describes the deployment contract.
+Verified live canonical URL: https://mrtrauf.github.io/clubops-intelligence-public/
+GitHub Pages deployment and anonymous live-browser checks succeeded on
+11 November 2026. This document describes the deployed boundary and evidence.
 
 ## Visitor journey
 
@@ -33,8 +33,10 @@ offline artifact remains available in source for reproducibility.
 - Local Chrome preview passes five club/season selections via live change events,
   desktop/mobile layouts (1440/390 pixels), images and visitor navigation.
 - Local browser console and HTTP error collections are empty.
-- Final live evidence is written to artifacts/site_browser_verification.json by
-  the browser checker after successful deployment. Fresh live screenshots use
+- Live Chrome checks passed five club/season change-event selections (20 KPI
+  values), image loads and visitor navigation at desktop/mobile widths, with
+  zero console errors and zero HTTP errors. Evidence:
+  artifacts/site_browser_verification.json. Fresh live screenshots use
   Website_Desktop.png, Website_Mobile.png and Dashboard_Mobile.png.
 
 The browser checker uses an isolated ignored profile. Its temporary loopback
@@ -50,3 +52,27 @@ rendering, refresh and DAX/M execution remain pending. Its DataFolder setup
 placeholder is an offline Desktop configuration, not a website link. No LLM or
 Power Automate implementation is claimed. Responsive checks and basic labeled
 controls/alt text do not constitute a full accessibility certification.
+
+## Verified public deployment
+
+Initial successful workflow: https://github.com/MRTRauf/clubops-intelligence-public/actions/runs/43076119828
+Site content commit: a0891cb8d2b7072944dbef74d5bbf5171e880759.
+The subsequent evidence commit preserves those website/data bytes and is deployed
+through the same workflow; final Actions/remote HEAD confirmation is reported
+at task completion. No private repository content is uploaded.
+
+Anonymous HTTP crawl: 18 public HTTPS URLs returned 200, including landing,
+dashboard, case study, briefing, CSS, screenshots, workbook/CSV/PBIP downloads
+and source/attribution links. Downloaded workbook and CSV bytes match the
+verified source artifacts; PBIP archive contains the project and schema license.
+Evidence: artifacts/site_http_verification.json.
+
+Live browser journey: landing -> dashboard -> home -> case study -> briefing.
+Verified Barcelona (both seasons), Real Madrid 2024-25, Girona 2023-24 and
+Valencia 2024-25 through real select change events. Desktop 1440px and mobile
+390px checks show no page-level horizontal overflow. Live screenshots were
+captured and visually inspected. No authentication or stored session was used.
+
+The original private repository remains unchanged at its existing commit/tag.
+No analytics rebuild, Power BI Desktop installation or unrelated repository
+modification occurred.

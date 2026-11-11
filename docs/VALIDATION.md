@@ -56,3 +56,14 @@ Power BI Desktop was not available: Microsoft TMDL deserialization, Power Query
 refresh, DAX evaluation, native rendering, slicer interactions and save/reopen
 acceptance remain unverified. The PBIP guide supplies five club reconciliation
 cases. There is no claimed PBIX, LLM feature, Power Automate flow or deployment.
+
+## Hosted portfolio acceptance
+
+The later GitHub Pages publication adds live browser validation, documented in
+WEBSITE.md. Nineteen Python tests and reporting integrity checks pass again;
+read-only raw reconciliation passes without rebuilding outputs. The hosted
+dashboard keeps the verified embedded DATA object and now has tested live
+season/club change events, responsive 1440/390px layouts, navigation, image
+loads and zero console errors. An anonymous crawl verifies 18 HTTPS URLs and
+public download integrity. This supplements the earlier offline evidence;
+Power BI Desktop and full accessibility certification remain pending.
