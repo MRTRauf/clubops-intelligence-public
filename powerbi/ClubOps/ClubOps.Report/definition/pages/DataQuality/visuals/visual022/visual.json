@@ -1,0 +1,136 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "visual022",
+  "position": {
+    "x": 490,
+    "y": 250,
+    "width": 770,
+    "height": 250,
+    "z": 22,
+    "tabOrder": 22
+  },
+  "visual": {
+    "visualType": "tableEx",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SeasonSummary"
+                    }
+                  },
+                  "Property": "season"
+                }
+              },
+              "queryRef": "SeasonSummary.season"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SeasonSummary"
+                    }
+                  },
+                  "Property": "source_records"
+                }
+              },
+              "queryRef": "SeasonSummary.source_records"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SeasonSummary"
+                    }
+                  },
+                  "Property": "accepted"
+                }
+              },
+              "queryRef": "SeasonSummary.accepted"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SeasonSummary"
+                    }
+                  },
+                  "Property": "rejected"
+                }
+              },
+              "queryRef": "SeasonSummary.rejected"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SeasonSummary"
+                    }
+                  },
+                  "Property": "completed"
+                }
+              },
+              "queryRef": "SeasonSummary.completed"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SeasonSummary"
+                    }
+                  },
+                  "Property": "unscored"
+                }
+              },
+              "queryRef": "SeasonSummary.unscored"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "SeasonSummary"
+                    }
+                  },
+                  "Property": "result_coverage_pct"
+                }
+              },
+              "queryRef": "SeasonSummary.result_coverage_pct"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Community data - 380 benchmark does not certify results'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

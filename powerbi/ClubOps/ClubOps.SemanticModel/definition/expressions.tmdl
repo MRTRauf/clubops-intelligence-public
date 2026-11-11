@@ -1,0 +1,1 @@
+expression DataFolder = "C:/CHANGE_ME/clubops-intelligence-public/data/processed/" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]

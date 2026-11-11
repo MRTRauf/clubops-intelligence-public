@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "visual017",
+  "position": {
+    "x": 20,
+    "y": 115,
+    "width": 295,
+    "height": 115,
+    "z": 17,
+    "tabOrder": 17
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ClubMatches"
+                    }
+                  },
+                  "Property": "Source Records"
+                }
+              },
+              "queryRef": "ClubMatches.Source Records"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Source Records'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

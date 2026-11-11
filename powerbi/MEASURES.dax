@@ -1,0 +1,42 @@
+-- Paste each measure separately into Power BI Desktop after verifying column types.
+-- Suggested tables: ClubMatches (one row per club per fixture), Matches (one row per fixture).
+-- These are code templates, NOT a published or verified PBIX report.
+
+Club Fixtures = COUNTROWS(ClubMatches)
+
+Club Completed = SUM(ClubMatches[is_complete])
+
+Club Unscored = [Club Fixtures] - [Club Completed]
+
+Club Wins = CALCULATE(COUNTROWS(ClubMatches), ClubMatches[result] = "W")
+
+Club Draws = CALCULATE(COUNTROWS(ClubMatches), ClubMatches[result] = "D")
+
+Club Losses = CALCULATE(COUNTROWS(ClubMatches), ClubMatches[result] = "L")
+
+Short League Gaps =
+COUNTROWS(
+    FILTER(
+        ClubMatches,
+        NOT ISBLANK(ClubMatches[gap_days_from_previous])
+            && ClubMatches[gap_days_from_previous] <= 3
+    )
+)
+
+-- ClubMatches respects the club/season slicers on the overview page.
+Distinct League Matches = DISTINCTCOUNT(ClubMatches[match_id])
+
+Source Records = SUM(SeasonSummary[source_records])
+
+Accepted Source Matches = SUM(SeasonSummary[accepted])
+
+Rejected Source Records = SUM(SeasonSummary[rejected])
+
+Result Coverage Pct =
+DIVIDE(SUM(SeasonSummary[completed]), SUM(SeasonSummary[accepted]))
+
+QA Messages = COUNTROWS(QA_Issues)
+
+-- Format Result Coverage Pct as percentage in Desktop.
+-- SeasonSummary measures should live on the separate QA page unless a proper
+-- shared Season dimension and single-direction relationships have been created.

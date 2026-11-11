@@ -1,0 +1,11 @@
+table DimSeason
+
+	column season
+		dataType: string
+		summarizeBy: none
+		sourceColumn: season
+
+	partition DimSeason = m
+		mode: import
+		source =
+			Table.Distinct(Table.SelectColumns(SeasonSummary, {"season"}))

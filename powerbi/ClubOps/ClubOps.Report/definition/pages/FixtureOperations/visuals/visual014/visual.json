@@ -1,0 +1,75 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "visual014",
+  "position": {
+    "x": 20,
+    "y": 250,
+    "width": 1240,
+    "height": 260,
+    "z": 14,
+    "tabOrder": 14
+  },
+  "visual": {
+    "visualType": "clusteredColumnChart",
+    "query": {
+      "queryState": {
+        "Category": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "DimClub"
+                    }
+                  },
+                  "Property": "club"
+                }
+              },
+              "queryRef": "DimClub.club"
+            }
+          ]
+        },
+        "Y": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ClubMatches"
+                    }
+                  },
+                  "Property": "Short League Gaps"
+                }
+              },
+              "queryRef": "ClubMatches.Short League Gaps"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Short league gaps by club - calendar intervals, not physical rest'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

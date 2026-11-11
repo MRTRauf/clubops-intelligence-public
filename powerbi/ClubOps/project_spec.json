@@ -1,0 +1,150 @@
+{
+  "tables": {
+    "Matches": {
+      "season": "string",
+      "match_id": "string",
+      "date": "dateTime",
+      "round": "string",
+      "home": "string",
+      "away": "string",
+      "home_key": "string",
+      "away_key": "string",
+      "home_goals": "int64",
+      "away_goals": "int64",
+      "is_complete": "int64",
+      "source_row": "int64",
+      "source_sha256": "string",
+      "source_url": "string"
+    },
+    "ClubMatches": {
+      "season": "string",
+      "match_id": "string",
+      "date": "dateTime",
+      "round": "string",
+      "club": "string",
+      "club_key": "string",
+      "opponent": "string",
+      "venue": "string",
+      "goals_for": "int64",
+      "goals_against": "int64",
+      "result": "string",
+      "is_complete": "int64",
+      "gap_days_from_previous": "int64"
+    },
+    "ClubSummary": {
+      "season": "string",
+      "club": "string",
+      "club_key": "string",
+      "fixtures": "int64",
+      "completed": "int64",
+      "home": "string",
+      "away": "string",
+      "wins": "int64",
+      "draws": "int64",
+      "losses": "int64",
+      "short_gaps_le_3_days": "int64",
+      "average_gap_days": "double"
+    },
+    "SeasonSummary": {
+      "season": "string",
+      "source_records": "int64",
+      "accepted": "int64",
+      "rejected": "int64",
+      "clubs": "int64",
+      "completed": "int64",
+      "unscored": "int64",
+      "illustrative_expected_380": "int64",
+      "difference_from_380": "int64",
+      "result_coverage_pct": "double",
+      "source_sha256": "string"
+    },
+    "QA_Issues": {
+      "severity": "string",
+      "season": "string",
+      "source_row": "int64",
+      "code": "string",
+      "detail": "string"
+    },
+    "DimSeason": {
+      "season": "string"
+    },
+    "DimClub": {
+      "club_key": "string",
+      "club": "string"
+    }
+  },
+  "csv_files": {
+    "Matches": "matches.csv",
+    "ClubMatches": "club_matches.csv",
+    "ClubSummary": "club_summary.csv",
+    "SeasonSummary": "season_summary.csv",
+    "QA_Issues": "qa_issues.csv"
+  },
+  "relationships": [
+    [
+      "Matches",
+      "season",
+      "DimSeason",
+      "season"
+    ],
+    [
+      "ClubMatches",
+      "match_id",
+      "Matches",
+      "match_id"
+    ],
+    [
+      "ClubSummary",
+      "season",
+      "DimSeason",
+      "season"
+    ],
+    [
+      "SeasonSummary",
+      "season",
+      "DimSeason",
+      "season"
+    ],
+    [
+      "QA_Issues",
+      "season",
+      "DimSeason",
+      "season"
+    ],
+    [
+      "ClubMatches",
+      "club_key",
+      "DimClub",
+      "club_key"
+    ],
+    [
+      "ClubSummary",
+      "club_key",
+      "DimClub",
+      "club_key"
+    ]
+  ],
+  "measures": {
+    "Club Fixtures": "COUNTROWS(ClubMatches)",
+    "Club Scored": "SUM(ClubMatches[is_complete])",
+    "Club Unknown": "[Club Fixtures] - [Club Scored]",
+    "League Matches": "DISTINCTCOUNT(ClubMatches[match_id])",
+    "Wins": "CALCULATE(COUNTROWS(ClubMatches), ClubMatches[result] = \"W\")",
+    "Short League Gaps": "COUNTROWS(FILTER(ClubMatches, NOT ISBLANK(ClubMatches[gap_days_from_previous]) && ClubMatches[gap_days_from_previous] <= 3))",
+    "Average League Gap": "AVERAGE(ClubMatches[gap_days_from_previous])",
+    "Peer Short Gaps": "CALCULATE([Short League Gaps], REMOVEFILTERS(DimClub))",
+    "Source Records": "SUM(SeasonSummary[source_records])",
+    "Accepted Records": "SUM(SeasonSummary[accepted])",
+    "Rejected Records": "SUM(SeasonSummary[rejected])",
+    "Unknown Results": "SUM(SeasonSummary[unscored])",
+    "Result Coverage": "DIVIDE(SUM(SeasonSummary[completed]), SUM(SeasonSummary[accepted]))",
+    "QA Messages": "COALESCE(COUNTROWS(QA_Issues), 0)"
+  },
+  "pages": [
+    "ClubOverview",
+    "FixtureOperations",
+    "DataQuality"
+  ],
+  "visual_count": 23,
+  "data_folder": "C:/CHANGE_ME/clubops-intelligence-public/data/processed/"
+}

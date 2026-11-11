@@ -1,0 +1,30 @@
+{
+  "json_documents_validated": 32,
+  "official_schemas_cached": 10,
+  "tables": 7,
+  "relationships": 7,
+  "measures_static_checked": 14,
+  "pages": [
+    "ClubOverview",
+    "FixtureOperations",
+    "DataQuality"
+  ],
+  "visuals": 23,
+  "csv_counts": {
+    "Matches": 760,
+    "ClubMatches": 1520,
+    "ClubSummary": 40,
+    "SeasonSummary": 2,
+    "QA_Issues": 10,
+    "DimSeason": 2,
+    "DimClub": 23
+  },
+  "data_folder": "C:/CHANGE_ME/clubops-intelligence-public/data/processed/",
+  "orphan_keys": 0,
+  "ambiguous_filter_paths": 0,
+  "desktop_tested": false,
+  "tmdl_tom_deserialized": false,
+  "dax_executed": false,
+  "power_query_executed": false,
+  "limits": "JSON/schema, static references and CSV integrity only; visual role semantics, TMDL parsing and DAX/M execution need Desktop."
+}

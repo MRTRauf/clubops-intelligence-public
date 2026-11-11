@@ -1,0 +1,120 @@
+table ClubMatches
+
+	column season
+		dataType: string
+		summarizeBy: none
+		sourceColumn: season
+
+	column match_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: match_id
+
+	column date
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: date
+		formatString: yyyy-MM-dd
+
+	column round
+		dataType: string
+		summarizeBy: none
+		sourceColumn: round
+
+	column club
+		dataType: string
+		summarizeBy: none
+		sourceColumn: club
+
+	column club_key
+		dataType: string
+		summarizeBy: none
+		sourceColumn: club_key
+
+	column opponent
+		dataType: string
+		summarizeBy: none
+		sourceColumn: opponent
+
+	column venue
+		dataType: string
+		summarizeBy: none
+		sourceColumn: venue
+
+	column goals_for
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: goals_for
+
+	column goals_against
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: goals_against
+
+	column result
+		dataType: string
+		summarizeBy: none
+		sourceColumn: result
+
+	column is_complete
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: is_complete
+
+	column gap_days_from_previous
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: gap_days_from_previous
+
+	measure 'Club Fixtures' = COUNTROWS(ClubMatches)
+		formatString: #,0
+
+	measure 'Club Scored' = SUM(ClubMatches[is_complete])
+		formatString: #,0
+
+	measure 'Club Unknown' = [Club Fixtures] - [Club Scored]
+		formatString: #,0
+
+	measure 'League Matches' = DISTINCTCOUNT(ClubMatches[match_id])
+		formatString: #,0
+
+	measure 'Wins' = CALCULATE(COUNTROWS(ClubMatches), ClubMatches[result] = "W")
+		formatString: #,0
+
+	measure 'Short League Gaps' = COUNTROWS(FILTER(ClubMatches, NOT ISBLANK(ClubMatches[gap_days_from_previous]) && ClubMatches[gap_days_from_previous] <= 3))
+		formatString: #,0
+
+	measure 'Average League Gap' = AVERAGE(ClubMatches[gap_days_from_previous])
+		formatString: 0.00
+
+	measure 'Peer Short Gaps' = CALCULATE([Short League Gaps], REMOVEFILTERS(DimClub))
+		formatString: #,0
+
+	measure 'Source Records' = SUM(SeasonSummary[source_records])
+		formatString: #,0
+
+	measure 'Accepted Records' = SUM(SeasonSummary[accepted])
+		formatString: #,0
+
+	measure 'Rejected Records' = SUM(SeasonSummary[rejected])
+		formatString: #,0
+
+	measure 'Unknown Results' = SUM(SeasonSummary[unscored])
+		formatString: #,0
+
+	measure 'Result Coverage' = DIVIDE(SUM(SeasonSummary[completed]), SUM(SeasonSummary[accepted]))
+		formatString: 0.00%
+
+	measure 'QA Messages' = COALESCE(COUNTROWS(QA_Issues), 0)
+		formatString: #,0
+
+	partition ClubMatches = m
+		mode: import
+		source =
+			let
+			    Raw = Csv.Document(File.Contents(DataFolder & "club_matches.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Raw, [PromoteAllScalars=true]),
+			    Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, {"goals_for", "goals_against", "is_complete", "gap_days_from_previous"}),
+			    Typed = Table.TransformColumnTypes(Nulls, {{"season", type text}, {"match_id", type text}, {"date", type date}, {"round", type text}, {"club", type text}, {"club_key", type text}, {"opponent", type text}, {"venue", type text}, {"goals_for", Int64.Type}, {"goals_against", Int64.Type}, {"result", type text}, {"is_complete", Int64.Type}, {"gap_days_from_previous", Int64.Type}}, "en-US")
+			in
+			    Typed

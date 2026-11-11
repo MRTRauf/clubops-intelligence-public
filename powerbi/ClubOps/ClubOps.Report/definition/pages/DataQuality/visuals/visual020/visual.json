@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json",
+  "name": "visual020",
+  "position": {
+    "x": 950,
+    "y": 115,
+    "width": 295,
+    "height": 115,
+    "z": 20,
+    "tabOrder": 20
+  },
+  "visual": {
+    "visualType": "card",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "ClubMatches"
+                    }
+                  },
+                  "Property": "Result Coverage"
+                }
+              },
+              "queryRef": "ClubMatches.Result Coverage"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "true"
+                }
+              }
+            },
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Result Coverage'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

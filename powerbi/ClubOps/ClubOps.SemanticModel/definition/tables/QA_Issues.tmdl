@@ -1,0 +1,37 @@
+table QA_Issues
+
+	column severity
+		dataType: string
+		summarizeBy: none
+		sourceColumn: severity
+
+	column season
+		dataType: string
+		summarizeBy: none
+		sourceColumn: season
+
+	column source_row
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: source_row
+
+	column code
+		dataType: string
+		summarizeBy: none
+		sourceColumn: code
+
+	column detail
+		dataType: string
+		summarizeBy: none
+		sourceColumn: detail
+
+	partition QA_Issues = m
+		mode: import
+		source =
+			let
+			    Raw = Csv.Document(File.Contents(DataFolder & "qa_issues.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Raw, [PromoteAllScalars=true]),
+			    Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, {"source_row"}),
+			    Typed = Table.TransformColumnTypes(Nulls, {{"severity", type text}, {"season", type text}, {"source_row", Int64.Type}, {"code", type text}, {"detail", type text}}, "en-US")
+			in
+			    Typed

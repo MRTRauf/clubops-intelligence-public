@@ -1,0 +1,83 @@
+table Matches
+
+	column season
+		dataType: string
+		summarizeBy: none
+		sourceColumn: season
+
+	column match_id
+		dataType: string
+		summarizeBy: none
+		sourceColumn: match_id
+
+	column date
+		dataType: dateTime
+		summarizeBy: none
+		sourceColumn: date
+		formatString: yyyy-MM-dd
+
+	column round
+		dataType: string
+		summarizeBy: none
+		sourceColumn: round
+
+	column home
+		dataType: string
+		summarizeBy: none
+		sourceColumn: home
+
+	column away
+		dataType: string
+		summarizeBy: none
+		sourceColumn: away
+
+	column home_key
+		dataType: string
+		summarizeBy: none
+		sourceColumn: home_key
+
+	column away_key
+		dataType: string
+		summarizeBy: none
+		sourceColumn: away_key
+
+	column home_goals
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: home_goals
+
+	column away_goals
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: away_goals
+
+	column is_complete
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: is_complete
+
+	column source_row
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: source_row
+
+	column source_sha256
+		dataType: string
+		summarizeBy: none
+		sourceColumn: source_sha256
+
+	column source_url
+		dataType: string
+		summarizeBy: none
+		sourceColumn: source_url
+
+	partition Matches = m
+		mode: import
+		source =
+			let
+			    Raw = Csv.Document(File.Contents(DataFolder & "matches.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Raw, [PromoteAllScalars=true]),
+			    Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, {"home_goals", "away_goals", "is_complete", "source_row"}),
+			    Typed = Table.TransformColumnTypes(Nulls, {{"season", type text}, {"match_id", type text}, {"date", type date}, {"round", type text}, {"home", type text}, {"away", type text}, {"home_key", type text}, {"away_key", type text}, {"home_goals", Int64.Type}, {"away_goals", Int64.Type}, {"is_complete", Int64.Type}, {"source_row", Int64.Type}, {"source_sha256", type text}, {"source_url", type text}}, "en-US")
+			in
+			    Typed

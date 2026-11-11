@@ -1,0 +1,2 @@
+# Optional workbook regeneration only; no third-party dependency for clubops CLI.
+openpyxl==3.1.5

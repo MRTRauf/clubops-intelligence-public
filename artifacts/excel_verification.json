@@ -1,0 +1,890 @@
+﻿{
+    "pivot_column_width":  18,
+    "pivot_tables":  1,
+    "grand_totals_suppressed":  true,
+    "season_change_checked":  true,
+    "pivot_value_checks":  120,
+    "pivot_captions":  {
+                           "completed":  "Scored",
+                           "fixtures":  "Club fixtures",
+                           "short_gaps_le_3_days":  "Gaps \u003c=3 days"
+                       },
+    "focus_formula_checks":  4,
+    "excel_version":  "16.0",
+    "reopened":  true,
+    "formula_checks":  [
+                           {
+                               "expected":  2,
+                               "cell":  "B5",
+                               "actual":  2,
+                               "formula":  "=COUNTA(SeasonData[season])"
+                           },
+                           {
+                               "expected":  750,
+                               "cell":  "B7",
+                               "actual":  750,
+                               "formula":  "=SUM(SeasonData[completed])"
+                           },
+                           {
+                               "expected":  760,
+                               "cell":  "B6",
+                               "actual":  760,
+                               "formula":  "=SUM(SeasonData[accepted])"
+                           },
+                           {
+                               "expected":  10,
+                               "cell":  "B8",
+                               "actual":  10,
+                               "formula":  "=SUM(SeasonData[unscored])"
+                           },
+                           {
+                               "expected":  0,
+                               "cell":  "B10",
+                               "actual":  0,
+                               "formula":  "=SUM(SeasonData[rejected])"
+                           }
+                       ],
+    "template_opened_read_only":  true,
+    "pivot_checks":  [
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Athletic Club",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Athletic Club",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  1,
+                             "expected":  1,
+                             "club":  "Athletic Club",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "CA Osasuna",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "CA Osasuna",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "CA Osasuna",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Cádiz CF",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Cádiz CF",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "Cádiz CF",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Club Atlético de Madrid",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Club Atlético de Madrid",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  4,
+                             "expected":  4,
+                             "club":  "Club Atlético de Madrid",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Deportivo Alavés",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Deportivo Alavés",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  2,
+                             "expected":  2,
+                             "club":  "Deportivo Alavés",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "FC Barcelona",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "FC Barcelona",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  5,
+                             "expected":  5,
+                             "club":  "FC Barcelona",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Getafe CF",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Getafe CF",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  7,
+                             "expected":  7,
+                             "club":  "Getafe CF",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Girona FC",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Girona FC",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  2,
+                             "expected":  2,
+                             "club":  "Girona FC",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Granada CF",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Granada CF",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  2,
+                             "expected":  2,
+                             "club":  "Granada CF",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Rayo Vallecano de Madrid",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Rayo Vallecano de Madrid",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "Rayo Vallecano de Madrid",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "RC Celta de Vigo",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "RC Celta de Vigo",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  1,
+                             "expected":  1,
+                             "club":  "RC Celta de Vigo",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "RCD Mallorca",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "RCD Mallorca",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  2,
+                             "expected":  2,
+                             "club":  "RCD Mallorca",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Real Betis Balompié",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Real Betis Balompié",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  2,
+                             "expected":  2,
+                             "club":  "Real Betis Balompié",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Real Madrid CF",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Real Madrid CF",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  4,
+                             "expected":  4,
+                             "club":  "Real Madrid CF",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Real Sociedad de Fútbol",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Real Sociedad de Fútbol",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  4,
+                             "expected":  4,
+                             "club":  "Real Sociedad de Fútbol",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Sevilla FC",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Sevilla FC",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "Sevilla FC",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "UD Almería",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "UD Almería",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "UD Almería",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "UD Las Palmas",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "UD Las Palmas",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "UD Las Palmas",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Valencia CF",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Valencia CF",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  2,
+                             "expected":  2,
+                             "club":  "Valencia CF",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Villarreal CF",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Villarreal CF",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2023-24",
+                             "actual":  4,
+                             "expected":  4,
+                             "club":  "Villarreal CF",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Athletic Club",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Athletic Club",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  5,
+                             "expected":  5,
+                             "club":  "Athletic Club",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "CA Osasuna",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "CA Osasuna",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  4,
+                             "expected":  4,
+                             "club":  "CA Osasuna",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "CD Leganés",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "CD Leganés",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  4,
+                             "expected":  4,
+                             "club":  "CD Leganés",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Club Atlético de Madrid",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Club Atlético de Madrid",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  4,
+                             "expected":  4,
+                             "club":  "Club Atlético de Madrid",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Deportivo Alavés",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Deportivo Alavés",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "Deportivo Alavés",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "FC Barcelona",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "FC Barcelona",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  7,
+                             "expected":  7,
+                             "club":  "FC Barcelona",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Getafe CF",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Getafe CF",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "Getafe CF",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Girona FC",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Girona FC",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "Girona FC",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Rayo Vallecano de Madrid",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Rayo Vallecano de Madrid",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  4,
+                             "expected":  4,
+                             "club":  "Rayo Vallecano de Madrid",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "RC Celta de Vigo",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "RC Celta de Vigo",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "RC Celta de Vigo",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "RCD Espanyol de Barcelona",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "RCD Espanyol de Barcelona",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "RCD Espanyol de Barcelona",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "RCD Mallorca",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "RCD Mallorca",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  4,
+                             "expected":  4,
+                             "club":  "RCD Mallorca",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Real Betis Balompié",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Real Betis Balompié",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  4,
+                             "expected":  4,
+                             "club":  "Real Betis Balompié",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Real Madrid CF",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Real Madrid CF",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  6,
+                             "expected":  6,
+                             "club":  "Real Madrid CF",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Real Sociedad de Fútbol",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Real Sociedad de Fútbol",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "Real Sociedad de Fútbol",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Real Valladolid CF",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Real Valladolid CF",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  5,
+                             "expected":  5,
+                             "club":  "Real Valladolid CF",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Sevilla FC",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Sevilla FC",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  1,
+                             "expected":  1,
+                             "club":  "Sevilla FC",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "UD Las Palmas",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "UD Las Palmas",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  1,
+                             "expected":  1,
+                             "club":  "UD Las Palmas",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Valencia CF",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Valencia CF",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "Valencia CF",
+                             "field":  "short_gaps_le_3_days"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  38,
+                             "expected":  38,
+                             "club":  "Villarreal CF",
+                             "field":  "fixtures"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  37,
+                             "expected":  37,
+                             "club":  "Villarreal CF",
+                             "field":  "completed"
+                         },
+                         {
+                             "season":  "2024-25",
+                             "actual":  3,
+                             "expected":  3,
+                             "club":  "Villarreal CF",
+                             "field":  "short_gaps_le_3_days"
+                         }
+                     ]
+}

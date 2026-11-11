@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+.env.*
+.runtime/
+**/.pbi/
+~$*.xlsx
+*.log
+.DS_Store
+credentials/
+secrets/
+*.pem
+*.key

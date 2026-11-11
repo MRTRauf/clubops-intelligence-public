@@ -1,0 +1,16 @@
+table DimClub
+
+	column club_key
+		dataType: string
+		summarizeBy: none
+		sourceColumn: club_key
+
+	column club
+		dataType: string
+		summarizeBy: none
+		sourceColumn: club
+
+	partition DimClub = m
+		mode: import
+		source =
+			Table.Distinct(Table.SelectColumns(ClubSummary, {"club_key", "club"}))

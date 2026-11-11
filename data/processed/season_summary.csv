@@ -1,0 +1,3 @@
+﻿season,source_records,accepted,rejected,clubs,completed,unscored,illustrative_expected_380,difference_from_380,result_coverage_pct,source_sha256
+2023-24,380,380,0,20,380,0,380,0,100.0,e4c1e1a958f224ba3c815c898982ab495b9577315cc58ee7a5e7b532960f738b
+2024-25,380,380,0,20,370,10,380,0,97.37,da5bfa1b3634e1039d9e71aec50bdc847f8761189e3de235a4e730e0dc64ca38

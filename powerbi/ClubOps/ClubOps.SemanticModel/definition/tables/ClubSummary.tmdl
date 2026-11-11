@@ -1,0 +1,72 @@
+table ClubSummary
+
+	column season
+		dataType: string
+		summarizeBy: none
+		sourceColumn: season
+
+	column club
+		dataType: string
+		summarizeBy: none
+		sourceColumn: club
+
+	column club_key
+		dataType: string
+		summarizeBy: none
+		sourceColumn: club_key
+
+	column fixtures
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: fixtures
+
+	column completed
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: completed
+
+	column home
+		dataType: string
+		summarizeBy: none
+		sourceColumn: home
+
+	column away
+		dataType: string
+		summarizeBy: none
+		sourceColumn: away
+
+	column wins
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: wins
+
+	column draws
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: draws
+
+	column losses
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: losses
+
+	column short_gaps_le_3_days
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: short_gaps_le_3_days
+
+	column average_gap_days
+		dataType: double
+		summarizeBy: none
+		sourceColumn: average_gap_days
+
+	partition ClubSummary = m
+		mode: import
+		source =
+			let
+			    Raw = Csv.Document(File.Contents(DataFolder & "club_summary.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Raw, [PromoteAllScalars=true]),
+			    Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, {"fixtures", "completed", "wins", "draws", "losses", "short_gaps_le_3_days", "average_gap_days"}),
+			    Typed = Table.TransformColumnTypes(Nulls, {{"season", type text}, {"club", type text}, {"club_key", type text}, {"fixtures", Int64.Type}, {"completed", Int64.Type}, {"home", type text}, {"away", type text}, {"wins", Int64.Type}, {"draws", Int64.Type}, {"losses", Int64.Type}, {"short_gaps_le_3_days", Int64.Type}, {"average_gap_days", type number}}, "en-US")
+			in
+			    Typed

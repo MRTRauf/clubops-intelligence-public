@@ -1,0 +1,17 @@
+{
+  "project": "ClubOps Intelligence — one-day MVP",
+  "source_repository": "https://github.com/openfootball/football.json",
+  "license": "CC0 / public-domain dedication according to upstream README and LICENSE",
+  "sources": [
+    {
+      "season": "2023-24",
+      "url": "https://raw.githubusercontent.com/openfootball/football.json/e6744429ee395bc86f247348c6184bb08d4eb361/2023-24/es.1.json",
+      "sha256": "e4c1e1a958f224ba3c815c898982ab495b9577315cc58ee7a5e7b532960f738b"
+    },
+    {
+      "season": "2024-25",
+      "url": "https://raw.githubusercontent.com/openfootball/football.json/e6744429ee395bc86f247348c6184bb08d4eb361/2024-25/es.1.json",
+      "sha256": "da5bfa1b3634e1039d9e71aec50bdc847f8761189e3de235a4e730e0dc64ca38"
+    }
+  ]
+}

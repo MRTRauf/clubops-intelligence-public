@@ -1,0 +1,48 @@
+relationship rel0
+	fromColumn: Matches.season
+	toColumn: DimSeason.season
+	fromCardinality: many
+	toCardinality: one
+	crossFilteringBehavior: oneDirection
+
+relationship rel1
+	fromColumn: ClubMatches.match_id
+	toColumn: Matches.match_id
+	fromCardinality: many
+	toCardinality: one
+	crossFilteringBehavior: oneDirection
+
+relationship rel2
+	fromColumn: ClubSummary.season
+	toColumn: DimSeason.season
+	fromCardinality: many
+	toCardinality: one
+	crossFilteringBehavior: oneDirection
+
+relationship rel3
+	fromColumn: SeasonSummary.season
+	toColumn: DimSeason.season
+	fromCardinality: many
+	toCardinality: one
+	crossFilteringBehavior: oneDirection
+
+relationship rel4
+	fromColumn: QA_Issues.season
+	toColumn: DimSeason.season
+	fromCardinality: many
+	toCardinality: one
+	crossFilteringBehavior: oneDirection
+
+relationship rel5
+	fromColumn: ClubMatches.club_key
+	toColumn: DimClub.club_key
+	fromCardinality: many
+	toCardinality: one
+	crossFilteringBehavior: oneDirection
+
+relationship rel6
+	fromColumn: ClubSummary.club_key
+	toColumn: DimClub.club_key
+	fromCardinality: many
+	toCardinality: one
+	crossFilteringBehavior: oneDirection

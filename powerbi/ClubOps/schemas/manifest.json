@@ -1,0 +1,42 @@
+{
+  "https://developer.microsoft.com/json-schemas/fabric/pbip/pbipProperties/1.0.0/schema.json": {
+    "file": "ceaec1e19ff71f742c33369bc9fdae507b8112017246004c9d0e125e4fdc1904.json",
+    "sha256": "af66cd9850f8f99373c4ebc991e3c1612e74aebdcdc67a9f564d6122c313250d"
+  },
+  "https://developer.microsoft.com/json-schemas/fabric/item/report/definitionProperties/2.0.0/schema.json": {
+    "file": "b0f4d20273f04f465ae230e3746d36e9625084259f7149c6b1a37b5559c618f4.json",
+    "sha256": "e46b78fce6f2107a005f27acce1d12f7bd03714c1f0ea4b41e11b0720e478cc1"
+  },
+  "https://developer.microsoft.com/json-schemas/fabric/item/semanticModel/definitionProperties/1.0.0/schema.json": {
+    "file": "4e00ed342fd7963f9f68d31f5c6b5c65b5f297cd7c970c3df6c8f9f59a3aa272.json",
+    "sha256": "4ba062788ea423978642bfeead3f9fb6385a3598fe50331c99ed03ec3a80e0fc"
+  },
+  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/report/1.0.0/schema.json": {
+    "file": "2aba2b64c1ae02acd896796da138feca47dd3b04fcc6c768c47f43c018c16f38.json",
+    "sha256": "3ff688fa8b58e6f5fa186d7049c5d4cadf88b8d073d5e17de58eab553b4d3164"
+  },
+  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/semanticQuery/1.0.0/schema.json": {
+    "file": "ca85c57fcf4dc5ec34b6b1bc7da8058616e24041c877588205c3e8aff525a509.json",
+    "sha256": "5a46b712ea5282702d086b32e1a5b64f86c6b58a8bbc17f5bc1007bfa72ddd31"
+  },
+  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/formattingObjectDefinitions/1.0.0/schema.json": {
+    "file": "4c27343d2d14fdd281206fb06d3465cc3264a5cb933a027ae4ef53605231724d.json",
+    "sha256": "6f31e2cdc947912df256938fc13d6d769a98aeda960e56bcb3cb1c2d4782d6d1"
+  },
+  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/versionMetadata/1.0.0/schema.json": {
+    "file": "bfc24a400e44c23bf46f4f92235e4ae1ce44d09e1c8887fa31ca1a7cf832fd7d.json",
+    "sha256": "2c77c510cb12e11f10172174422d0efb1d4e97da06b8d453b2abdf81537e68b2"
+  },
+  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/pagesMetadata/1.0.0/schema.json": {
+    "file": "d978f94784533b37ad4b8a3968c7535e32889a4a0233ae62a1bea3a129f39a1f.json",
+    "sha256": "3281fda0f3979dfb968ca094e0f984f705985c669a659ba186df316a414bab13"
+  },
+  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/page/1.0.0/schema.json": {
+    "file": "4213a369341a296dd3fb04b0d302337d558423a67dc1d53f3c096f3365d07e6c.json",
+    "sha256": "8e6dcdc458461f9ee04f58da79a18ec84c2c9c3583115345e1dd5ec94640db97"
+  },
+  "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/1.0.0/schema.json": {
+    "file": "954415b675f7761f1789af1c31eff49c78343cbb0be58d445d716f6c1f15c101.json",
+    "sha256": "fe20665cb77423225af4537670dce60111d5a576ae6658c7d5fd983b1b79b07a"
+  }
+}

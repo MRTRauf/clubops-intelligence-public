@@ -1,0 +1,21 @@
+{
+  "verified_at_utc": "2026-11-11T16:30:42.526386+00:00",
+  "commit": "e6744429ee395bc86f247348c6184bb08d4eb361",
+  "repository": "https://github.com/openfootball/football.json",
+  "sources": [
+    {
+      "season": "2023-24",
+      "original_acquisition_url": "https://raw.githubusercontent.com/openfootball/football.json/master/2023-24/es.1.json",
+      "pinned_url": "https://raw.githubusercontent.com/openfootball/football.json/e6744429ee395bc86f247348c6184bb08d4eb361/2023-24/es.1.json",
+      "sha256": "e4c1e1a958f224ba3c815c898982ab495b9577315cc58ee7a5e7b532960f738b",
+      "bytes": 114187
+    },
+    {
+      "season": "2024-25",
+      "original_acquisition_url": "https://raw.githubusercontent.com/openfootball/football.json/master/2024-25/es.1.json",
+      "pinned_url": "https://raw.githubusercontent.com/openfootball/football.json/e6744429ee395bc86f247348c6184bb08d4eb361/2024-25/es.1.json",
+      "sha256": "da5bfa1b3634e1039d9e71aec50bdc847f8761189e3de235a4e730e0dc64ca38",
+      "bytes": 108296
+    }
+  ]
+}

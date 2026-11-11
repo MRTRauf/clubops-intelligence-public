@@ -1,0 +1,60 @@
+{
+  "browser": "Chrome headless, real offline file rendering",
+  "views": [
+    {
+      "season": "2024-25",
+      "club": "FC Barcelona",
+      "values": {
+        "fixtures": "38",
+        "complete": "37",
+        "short": "7",
+        "scorecover": "97.4%"
+      },
+      "fixture_rows": 12
+    },
+    {
+      "season": "2023-24",
+      "club": "FC Barcelona",
+      "values": {
+        "fixtures": "38",
+        "complete": "38",
+        "short": "5",
+        "scorecover": "100.0%"
+      },
+      "fixture_rows": 12
+    },
+    {
+      "season": "2024-25",
+      "club": "Real Madrid CF",
+      "values": {
+        "fixtures": "38",
+        "complete": "37",
+        "short": "6",
+        "scorecover": "97.4%"
+      },
+      "fixture_rows": 12
+    },
+    {
+      "season": "2023-24",
+      "club": "Girona FC",
+      "values": {
+        "fixtures": "38",
+        "complete": "38",
+        "short": "2",
+        "scorecover": "100.0%"
+      },
+      "fixture_rows": 12
+    },
+    {
+      "season": "2024-25",
+      "club": "Valencia CF",
+      "values": {
+        "fixtures": "38",
+        "complete": "37",
+        "short": "3",
+        "scorecover": "97.4%"
+      },
+      "fixture_rows": 12
+    }
+  ]
+}

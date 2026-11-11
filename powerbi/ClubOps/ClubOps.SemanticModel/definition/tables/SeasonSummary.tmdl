@@ -1,0 +1,67 @@
+table SeasonSummary
+
+	column season
+		dataType: string
+		summarizeBy: none
+		sourceColumn: season
+
+	column source_records
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: source_records
+
+	column accepted
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: accepted
+
+	column rejected
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: rejected
+
+	column clubs
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: clubs
+
+	column completed
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: completed
+
+	column unscored
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: unscored
+
+	column illustrative_expected_380
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: illustrative_expected_380
+
+	column difference_from_380
+		dataType: int64
+		summarizeBy: none
+		sourceColumn: difference_from_380
+
+	column result_coverage_pct
+		dataType: double
+		summarizeBy: none
+		sourceColumn: result_coverage_pct
+
+	column source_sha256
+		dataType: string
+		summarizeBy: none
+		sourceColumn: source_sha256
+
+	partition SeasonSummary = m
+		mode: import
+		source =
+			let
+			    Raw = Csv.Document(File.Contents(DataFolder & "season_summary.csv"), [Delimiter=",", Encoding=65001, QuoteStyle=QuoteStyle.Csv]),
+			    Headers = Table.PromoteHeaders(Raw, [PromoteAllScalars=true]),
+			    Nulls = Table.ReplaceValue(Headers, "", null, Replacer.ReplaceValue, {"source_records", "accepted", "rejected", "clubs", "completed", "unscored", "illustrative_expected_380", "difference_from_380", "result_coverage_pct"}),
+			    Typed = Table.TransformColumnTypes(Nulls, {{"season", type text}, {"source_records", Int64.Type}, {"accepted", Int64.Type}, {"rejected", Int64.Type}, {"clubs", Int64.Type}, {"completed", Int64.Type}, {"unscored", Int64.Type}, {"illustrative_expected_380", Int64.Type}, {"difference_from_380", Int64.Type}, {"result_coverage_pct", type number}, {"source_sha256", type text}}, "en-US")
+			in
+			    Typed
